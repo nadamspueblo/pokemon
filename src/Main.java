@@ -15,16 +15,23 @@ public class Main extends PApplet {
     public void setup(){
     	gameOver = true;
         fill(120,50,240);
+    	background(0, 128, 0);
     }
 
     public void draw(){
     	if (gameOver) {
     		drawNewGameScreen();
     	}
+    	else {
+    		drawFightScreen();
+    	}
+    }
+    
+    public void drawFightScreen() {
+    	
     }
     
     public void drawNewGameScreen() {
-    	background(0, 128, 0);
     	fill(0, 0, 128);
     	rectMode(RADIUS);
     	rect(width / 2, height / 3, 200, 50, 20);
