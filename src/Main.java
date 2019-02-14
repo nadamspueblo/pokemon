@@ -3,6 +3,7 @@ import processing.core.PApplet;
 public class Main extends PApplet {
 	
 	private boolean gameOver;
+	Pokemon player1, player2;
 
 	public static void main(String[] args) {
         PApplet.main("Main");
@@ -28,7 +29,7 @@ public class Main extends PApplet {
     }
     
     public void drawFightScreen() {
-    	
+    	background(0, 128, 0);
     }
     
     public void drawNewGameScreen() {

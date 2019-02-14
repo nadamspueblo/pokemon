@@ -9,6 +9,9 @@ public abstract class Pokemon {
 	private double accuracy; // On a scale of 0 to 1.0
 	
 	// Constructors
+	public Pokemon() {
+		this("Pokemon", "Normal", 10, 100);
+	}
 	public Pokemon(String name, String type, int damage, int hp) {
 		this.name = name;
 		this.type = type;
