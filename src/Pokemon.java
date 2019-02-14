@@ -42,4 +42,5 @@ public abstract class Pokemon {
 	 */
 	public abstract void attack(Pokemon p, int which);
 	
+	public abstract void draw();	
 }
