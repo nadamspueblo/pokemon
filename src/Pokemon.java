@@ -34,8 +34,8 @@ public abstract class Pokemon {
 	}
 	
 	/** Attacks a pokemon with the specified attack
-	 * This method determines whether the attack misses or hits and apply the correct damage reducing p's hp
-	 * This method animates the attack
+	 * Determine whether the attack misses or hits and apply the correct damage reducing p's hp
+	 * Animate the attack
 	 * 
 	 * @param p The pokemon to be attacked
 	 * @param which 0, 1, or 2 for which attack should be used
