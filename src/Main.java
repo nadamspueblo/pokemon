@@ -1,22 +1,24 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Main extends PApplet {
 	
 	private boolean gameOver;
-	Pokemon player1, player2;
+	private Pokemon player1, player2;
+	private PImage jungleBackground;
 
 	public static void main(String[] args) {
         PApplet.main("Main");
 	}
 	
     public void settings(){
-        size(600,400);
+        size(768,432);
     }
 
     public void setup(){
-    	gameOver = true;
-        fill(120,50,240);
-    	background(0, 128, 0);
+    	gameOver = false;
+    	jungleBackground = loadImage("jungle_background.png");
+    	player1 = new Charmander(this);
     }
 
     public void draw(){
@@ -29,11 +31,19 @@ public class Main extends PApplet {
     }
     
     public void drawFightScreen() {
-    	background(0, 128, 0);
+    	// draw background
+    	image(jungleBackground, 0, 0);
+    	
+    	// draw farthest pokemon
+    	
+    	// draw closest pokemon
+    	player1.drawNextFrame();
+    	
+    	// draw attack menu
     }
     
     public void drawNewGameScreen() {
-    	fill(0, 0, 128);
+    	image(jungleBackground, 0, 0);
     	rectMode(RADIUS);
     	rect(width / 2, height / 3, 200, 50, 20);
     	fill(255);

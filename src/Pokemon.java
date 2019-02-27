@@ -1,7 +1,22 @@
+/**
+ * 
+ * @author Nathan Adams
+ * 
+ *
+ */
+import processing.core.PApplet;
 
 public abstract class Pokemon {
 	
-	// instance variables this.
+	// Constants to be used in subclasses
+	public static final String FIRE = "FIRE";
+	public static final String GRASS = "GRASS";
+	public static final String WATER = "WATER";
+	public static final String NORMAL = "NORMAL";
+	
+	// Instance variables
+	protected PApplet parent;
+	// These can be accessed using the getter methods from inside a subclasses
 	private String name;
 	private String type; // Fire, Water, etc
 	private int damage; // Damage the pokemon inflicts
@@ -10,16 +25,16 @@ public abstract class Pokemon {
 	
 	// Constructors
 	public Pokemon() {
-		this("Pokemon", "Normal", 10, 100);
+		this(null, "Pokemon", "Normal", 10, 100);
 	}
-	public Pokemon(String name, String type, int damage, int hp) {
+	// Override the constructor and call super(parent, name, type, damage, hp)
+	public Pokemon(PApplet parent, String name, String type, int damage, int hp) {
+		this.parent = parent;
 		this.name = name;
 		this.type = type;
 		this.damage = damage;
 		this.hp = hp;
-	}
-	public Pokemon(String name, String type) {
-		this(name, type, 10, 100);
+		this.accuracy = 0.9;
 	}
 	
 	// Getters for each property
@@ -35,15 +50,39 @@ public abstract class Pokemon {
 	public int getHp() {
 		return hp;
 	}
+	public double getAccuracy() {
+		return accuracy;
+	}
+	
+	// Setters
+	public void setHp(int value) {
+		hp = value;
+	}
+	public void setAccuracy(double value) {
+		if (value > 0 && value <= 1.0) {
+			accuracy = value;
+		}
+	}
+	
+	// Abstract methods that must be overridden in subclasses
+	
+	/** Reduces the pokemon's hp by a given amount
+	 * 
+	 * @param amount to reduce the this pokemon's hp
+	 */
+	public abstract void reduceHp(int amount);
 	
 	/** Attacks a pokemon with the specified attack
-	 * Determine whether the attack misses or hits and apply the correct damage reducing p's hp
+	 * Determine whether the attack misses or hits and apply the correct damage reducing the pokemon's hp
 	 * Animate the attack
 	 * 
 	 * @param p The pokemon to be attacked
-	 * @param which 0, 1, or 2 for which attack should be used
+	 * @param which value 0, 1, 2, or 3 for the attack that should be used
 	 */
 	public abstract void attack(Pokemon p, int which);
-	
-	public abstract void draw();	
+		
+	/** Draws the pokemon at the correct size and position on the screen
+	 *  
+	 */
+	public abstract void drawNextFrame();	
 }
